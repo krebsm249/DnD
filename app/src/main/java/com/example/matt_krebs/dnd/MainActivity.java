@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final TextView helloTextView = (TextView) findViewById(R.id.textField);
                 helloTextView.setText(newStr);
+                //Test
 
                 databaseReference.setValue(newStr);
             }
