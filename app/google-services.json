@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "612004086118",
+    "firebase_url": "https://dndfirebaseproject-5c55c.firebaseio.com",
+    "project_id": "dndfirebaseproject-5c55c",
+    "storage_bucket": "dndfirebaseproject-5c55c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612004086118:android:d02e45ef6c3ef6d2",
+        "android_client_info": {
+          "package_name": "com.example.matt_krebs.dnd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612004086118-25r42hrmovmp8kju1o9m3n33107291dm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.matt_krebs.dnd",
+            "certificate_hash": "4ff583d3d38acc1fa842d90009e23f9e4b65f2f7"
+          }
+        },
+        {
+          "client_id": "612004086118-b7u87mc88vv7r65qp7ihcq0svf6qccgu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQUv8hd_PtcPYvfXqXuAjLfvVTN425bL8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612004086118-b7u87mc88vv7r65qp7ihcq0svf6qccgu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
