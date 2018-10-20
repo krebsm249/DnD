@@ -29,9 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
                 final TextView helloTextView = (TextView) findViewById(R.id.textField);
                 helloTextView.setText(newStr);
-                //Test
-
-                databaseReference.setValue(newStr);
+                //databaseReference.setValue(newStr);
+                writeNewUser(databaseReference,"123","Matt","krebsmatt@ymail.com");
             }
         });
 
@@ -43,7 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
 
+    private void writeNewUser(DatabaseReference ref, String userId, String name, String email) {
+        User user = new User(name, email);
+
+        ref.child("users").child(userId).setValue(user);
     }
 }
