@@ -63,8 +63,8 @@ public class chargen extends AppCompatActivity{
         newCharBtn = findViewById(R.id.nextBtn);
         newCharBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                characterObject.setCurrentQuestionIndex(characterObject.getCurrentQuestionIndex()+1);
                 String textViewString = characterObject.getQuestion(characterObject.getCurrentQuestionIndex());
+                characterObject.setCurrentQuestionIndex(characterObject.getCurrentQuestionIndex()+1);
                 questions.setText(textViewString);
             }
         });

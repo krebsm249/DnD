@@ -11,7 +11,7 @@ public class CharacterObject {
     public String Race="";
     public int Age,Strength,Agility,Intelligence,Wisdom,Charisma,Constitution, currentQuestionIndex = 0;
 
-    private String questionString;
+    private String questionString = "1";
 
     CharacterObject() {}
 
@@ -32,7 +32,7 @@ public class CharacterObject {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                questionString = "ERROR";
             }
         });
         return questionString;
