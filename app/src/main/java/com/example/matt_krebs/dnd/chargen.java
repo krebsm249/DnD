@@ -26,6 +26,7 @@ public class chargen extends AppCompatActivity{
 
 
     private Button newCharBtn;
+    private TextView question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +37,17 @@ public class chargen extends AppCompatActivity{
         databaseReference= firebaseDatabase.getReference();
 
         DatabaseReference test = databaseReference;
+        question = (TextView) findViewById(R.id.questionText);
 
-        for (int x = 0;x<3;x ++) {
-            test = databaseReference.child("Race").child(String.valueOf(x));
+        for (int x = 0;x<1;x ++) {
+            test = databaseReference.child("Questions").child(String.valueOf(x));
 
 
             test.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    raceArray.add(dataSnapshot.getValue(String.class));
+                    //raceArray.add(dataSnapshot.getValue(String.class));
+                    question.setText(dataSnapshot.getValue(String.class));
                 }
 
                 @Override
@@ -58,7 +61,7 @@ public class chargen extends AppCompatActivity{
         //Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         //spinner.setOnItemSelectedListener(this);
-
+/*
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line,raceArray);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -83,6 +86,6 @@ public class chargen extends AppCompatActivity{
             public void onClick(View v) {
                 //Log.e("pos: " , Integer.toString(position));
             }
-        });
+        });*/
     }
 }
