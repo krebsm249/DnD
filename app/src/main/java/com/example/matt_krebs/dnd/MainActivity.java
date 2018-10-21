@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -36,30 +37,24 @@ public class MainActivity extends AppCompatActivity {
                 final TextView helloTextView = (TextView) findViewById(R.id.textField);
                 //helloTextView.setText(newStr);
                 //databaseReference.setValue(newStr);
-                writeNewUser(databaseReference,"123","Matt","krebsmatt@ymail.com");
+                //writeNewUser(databaseReference,"123","Matt","krebsmatt@ymail.com");
 
-               //helloTextView.setText(databaseReference.child("users").child("123").child("name").getKey());
+                //CharacterObject character = new CharacterObject("GUY");
 
-                List<String> arr = new ArrayList<String>();
-
-                arr.add("Test1");
-                arr.add("Test2");
-                arr.add("Test3");
-
-                databaseReference.child("test").setValue(arr);
+                //databaseReference.child("newCharacter").setValue(character);
 
                 DatabaseReference test = databaseReference;
 
-                for (int x = 0;x<3;x ++) {
-                    test = databaseReference.child("test").child(String.valueOf(x));
-                }
+
+                test = databaseReference.child("newCharacter");
+
 
                 test.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        val += dataSnapshot.getValue(String.class);
-                        helloTextView.setText(val);
-                        val += ", ";
+                        CharacterObject characterObject = dataSnapshot.getValue(CharacterObject.class);
+                        Log.e("Race",characterObject.Race);
+                        helloTextView.setText(characterObject.Race);
                     }
 
                     @Override
@@ -67,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
-                helloTextView.setText(val);
             }
         });
 
