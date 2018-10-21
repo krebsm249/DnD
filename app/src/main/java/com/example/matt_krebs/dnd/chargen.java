@@ -24,6 +24,11 @@ public class chargen extends AppCompatActivity{
     private DatabaseReference databaseReference;
     private List<String> raceArray = new ArrayList<String>();
 
+    private int currentQuestionIndex=0;
+
+    CharacterObject characterObject = new CharacterObject();
+    TextView questions;
+
 
     private Button newCharBtn;
 
@@ -37,31 +42,13 @@ public class chargen extends AppCompatActivity{
 
         DatabaseReference test = databaseReference;
 
-        for (int x = 0;x<3;x ++) {
-            test = databaseReference.child("Race").child(String.valueOf(x));
+        questions = findViewById(R.id.questionTextView);
 
-
-            test.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    raceArray.add(dataSnapshot.getValue(String.class));
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-
-        //Spinner STUFF
-        //Spinner spinner = (Spinner) findViewById(R.id.spinner);
-
-        //spinner.setOnItemSelectedListener(this);
+        String textViewString = characterObject.getQuestion(characterObject.getCurrentQuestionIndex());
+        questions.setText(textViewString);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line,raceArray);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         MaterialBetterSpinner betterSpinner = (MaterialBetterSpinner)findViewById(R.id.android_material_design_spinner);
         betterSpinner.setAdapter(adapter);
 
@@ -73,15 +60,12 @@ public class chargen extends AppCompatActivity{
             }
         });
 
-        //pinner.setAdapter(adapter);
-
-        //int position = spinner.getSelectedItemPosition();
-
-
         newCharBtn = findViewById(R.id.nextBtn);
         newCharBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Log.e("pos: " , Integer.toString(position));
+                characterObject.setCurrentQuestionIndex(characterObject.getCurrentQuestionIndex()+1);
+                String textViewString = characterObject.getQuestion(characterObject.getCurrentQuestionIndex());
+                questions.setText(textViewString);
             }
         });
     }

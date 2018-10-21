@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
-    String val= "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 String newStr = "BALLS MATT KULLING";
 
                 final TextView helloTextView = (TextView) findViewById(R.id.textField);
-                //helloTextView.setText(newStr);
-                //databaseReference.setValue(newStr);
-                //writeNewUser(databaseReference,"123","Matt","krebsmatt@ymail.com");
-
-                //CharacterObject character = new CharacterObject("GUY");
-
-                //databaseReference.child("newCharacter").setValue(character);
 
                 DatabaseReference test = databaseReference;
-
-
                 test = databaseReference.child("newCharacter");
 
 
