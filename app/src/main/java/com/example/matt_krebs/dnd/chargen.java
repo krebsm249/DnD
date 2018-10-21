@@ -16,21 +16,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-public class chargen extends AppCompatActivity {
+public class chargen extends AppCompatActivity{
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<String> raceArray = new ArrayList<String>();
 
-    //private String[] raceArray = new String[3];
 
-    private String cardStatusString = "t";
-
-
-
-
-    //private Spinner spinner = (Spinner) findViewById(R.id.spinner);
+    private Button newCharBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +34,6 @@ public class chargen extends AppCompatActivity {
 
         firebaseDatabase=FirebaseDatabase.getInstance();
         databaseReference= firebaseDatabase.getReference();
-
-        final Spinner sp1 = (Spinner) findViewById(R.id.spinner);
 
         DatabaseReference test = databaseReference;
 
@@ -60,33 +53,35 @@ public class chargen extends AppCompatActivity {
                 }
             });
         }
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, raceArray);
-        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp1.setAdapter(adp1);
 
-        sp1.setOnItemSelectedListener(new OnItemSelectedListener() {
+        //Spinner STUFF
+        //Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
+        //spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line,raceArray);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        MaterialBetterSpinner betterSpinner = (MaterialBetterSpinner)findViewById(R.id.android_material_design_spinner);
+        betterSpinner.setAdapter(adapter);
+
+        betterSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent,
-                                       View view, int pos, long id) {
-                cardStatusString = String.valueOf(pos);
-                Log.e("TEST1","testInLog");
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("Test"," selected spinner "+ raceArray.get(position));
 
             }
         });
 
+        //pinner.setAdapter(adapter);
 
-        final Button newCharBtn = findViewById(R.id.nextBtn);
+        //int position = spinner.getSelectedItemPosition();
+
+
+        newCharBtn = findViewById(R.id.nextBtn);
         newCharBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.e("Test", cardStatusString);
+                //Log.e("pos: " , Integer.toString(position));
             }
         });
     }
