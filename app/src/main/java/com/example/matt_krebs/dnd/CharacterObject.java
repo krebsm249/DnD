@@ -9,7 +9,8 @@ import com.google.firebase.database.ValueEventListener;
 public class CharacterObject {
     public String Name="";
     public String Race="";
-    public int Age,Strength,Agility,Intelligence,Wisdom,Charisma,Constitution, currentQuestionIndex = 0;
+    public int Age,Strength,Agility,Intelligence,Wisdom,Charisma,Constitution = 0;
+    public int currentQuestionIndex = 1;
 
     private String questionString = "1";
 
